@@ -1,0 +1,19 @@
+CRITICAL - 2021-04-19 12:48:47 --> Invalid file: dashboard/index.php
+#0 /Users/everton/MAPP/apache2/htdocs/bets/system/View/View.php(203): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+#1 /Users/everton/MAPP/apache2/htdocs/bets/system/Common.php(1217): CodeIgniter\View\View->render()
+#2 /Users/everton/MAPP/apache2/htdocs/bets/app/Controllers/Dashboard.php(9): view()
+#3 /Users/everton/MAPP/apache2/htdocs/bets/system/CodeIgniter.php(936): App\Controllers\Dashboard->index()
+#4 /Users/everton/MAPP/apache2/htdocs/bets/system/CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController()
+#5 /Users/everton/MAPP/apache2/htdocs/bets/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest()
+#6 /Users/everton/MAPP/apache2/htdocs/bets/index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-04-19 13:01:43 --> Call to undefined method CodeIgniter\View\View::extends()
+#0 /Users/everton/MAPP/apache2/htdocs/bets/system/View/View.php(220): include()
+#1 /Users/everton/MAPP/apache2/htdocs/bets/system/View/View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 /Users/everton/MAPP/apache2/htdocs/bets/system/Common.php(1217): CodeIgniter\View\View->render()
+#3 /Users/everton/MAPP/apache2/htdocs/bets/app/Controllers/Dashboard.php(9): view()
+#4 /Users/everton/MAPP/apache2/htdocs/bets/system/CodeIgniter.php(936): App\Controllers\Dashboard->index()
+#5 /Users/everton/MAPP/apache2/htdocs/bets/system/CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController()
+#6 /Users/everton/MAPP/apache2/htdocs/bets/system/CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest()
+#7 /Users/everton/MAPP/apache2/htdocs/bets/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
