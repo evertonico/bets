@@ -26,7 +26,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <!-- Navbar -->
-    <?=include('menu.php');?>
+    <?=include('navbar.php');?>
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
