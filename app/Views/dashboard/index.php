@@ -268,5 +268,4 @@
     <!-- /.container-fluid -->
 </div>
 <!-- /.content -->
-
 <?= $this->endSection(); ?>
