@@ -6,6 +6,7 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        echo view('dashboard/dashboard');
+        $dados['title'] = "Dashboard";
+        echo view('dashboard/dashboard', $dados);
     }
 }
