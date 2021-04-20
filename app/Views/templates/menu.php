@@ -15,7 +15,7 @@
         <li class="nav-header">FINANCEIRO</li>
 
         <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="<?=base_url('/caixa');?>" class="nav-link">
                 <i class="nav-icon fas fa-dollar-sign"></i>
                 <p>
                     Caixa
@@ -232,7 +232,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="<?=base_url('/alterarsenha');?>" class="nav-link">
                 <i class="nav-icon fas fa-key"></i>
                 <p>
                     Alterar senha
