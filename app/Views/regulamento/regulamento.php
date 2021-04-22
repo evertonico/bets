@@ -1,5 +1,7 @@
 <?= $this->extend('templates/template'); ?>
-<?= $this->section('content'); ?>
+<?= $this->section('content');
+?>
+
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -13,7 +15,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                   <textarea id="summernote">
-                    Place <em>some</em> <u>text</u> <strong>here</strong>
+                      <?=$regulamento->ds_regulamento?>
                   </textarea>
                     </div>
                     <div class="card-footer">
