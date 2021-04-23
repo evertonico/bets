@@ -1,6 +1,4 @@
-<?= $this->extend('templates/template');
-ini_set('display_errors', '1');
-?>
+<?= $this->extend('templates/template'); ?>
 <?= $this->section('content');
 ?>
     <!-- Main content -->
