@@ -3,19 +3,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
+/**
+ * Class RegulamentoModel
+ *
+ * Model do regulamento do site
+ *
+ * @package App\Entities
+ */
 class RegulamentoModel extends Model
 {
-    protected $table = 'bets.tb_regulamento';
+    protected $table = 'tb_regulamento';
     protected $allowedFields = ['ds_regulamento'];
     protected $returnType = 'App\Entities\RegulamentoEntity';
-
-    protected $validationRules    = [
-        'ds_regulamento'     => 'required'
-    ];
-
-    protected $validationMessages = [
-        'ds_regulamento'        => [
-            'required' => 'O campo regulamento não pode ser vazio.'
-        ]
-    ];
 }

@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('public/dist/css/adminlte.min.css'); ?>">
-    <link rel="stylesheet" href="<?= base_url('public/dist/css/skin-green.min.css'); ?>">
     <!-- summernote -->
     <link rel="stylesheet" href="<?= base_url('public/plugins/summernote/summernote-bs4.min.css'); ?>">
     <!-- Google Font -->
@@ -110,12 +109,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0"><?=$dados['title']?></h1>
+                        <h1 class="m-0"><?=$data['title']?></h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="<?=base_url()?>">Início</a></li>
-                            <li class="breadcrumb-item active"><a href="<?=current_url()?>"><?=$dados['title']?></a></li>
+                            <li class="breadcrumb-item active"><a href="<?=current_url()?>"><?=$data['title']?></a></li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -138,6 +137,10 @@
 <script src="<?= base_url('public/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 <!-- AdminLTE -->
 <script src="<?= base_url('public/dist/js/adminlte.js'); ?>"></script>
+
+<!-- jquery-validation -->
+<script src="<?= base_url('public/plugins/jquery-validation/jquery.validate.min.js'); ?>"</script>
+<script src="<?= base_url('public/plugins/jquery-validation/additional-methods.min.js'); ?>"</script>
 
 <!-- OPTIONAL SCRIPTS -->
 <script src="<?= base_url('public/plugins/chart.js/Chart.min.js'); ?>"></script>

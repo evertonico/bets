@@ -37,6 +37,7 @@ class Database extends Config
 		'password' => 'chagasluz',
 		'database' => 'postgres',
 		'DBDriver' => 'postgre',
+        'schema'   => 'bets',
 		'DBPrefix' => '',
 		'pConnect' => false,
 		'DBDebug'  => (ENVIRONMENT !== 'production'),
