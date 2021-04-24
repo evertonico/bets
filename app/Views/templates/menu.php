@@ -194,7 +194,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="<?= base_url('/gerentes/'); ?>" class="nav-link">
                 <i class="nav-icon fas fa-users-cog"></i>
                 <p>
                     Gerentes

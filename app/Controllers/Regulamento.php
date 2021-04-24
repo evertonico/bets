@@ -55,7 +55,7 @@ class Regulamento extends BaseController
 
             // Verificando se passou na validação
             if (!$res) {
-                // Chamando a view e exibindo erros de validação
+                // Chamando a view e enviando os erros de validação
                 echo view('regulamento/regulamento', [
                     'errors' => $validation->getErrors(),
                     'data' => $data
