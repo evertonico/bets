@@ -137,9 +137,12 @@
 <script src="<?= base_url('public/dist/js/adminlte.js'); ?>"></script>
 
 <!-- jquery-validation -->
-<script src="<?= base_url('public/plugins/jquery-validation/jquery.validate.min.js'); ?>"</script>
-<script src="<?= base_url('public/plugins/jquery-validation/additional-methods.min.js'); ?>"</script>
-
+<script src="<?= base_url('public/plugins/jquery-validation/jquery.validate.min.js'); ?>"></script>
+<script src="<?= base_url('public/plugins/jquery-validation/additional-methods.min.js'); ?>"></script>
+<!-- jquery-mask -->
+<!-- InputMask -->
+<script src="<?= base_url('public/plugins/moment/moment.min.js'); ?>"></script>
+<script src="<?= base_url('public/plugins/inputmask/jquery.inputmask.min.js'); ?>"></script>
 <!-- OPTIONAL SCRIPTS -->
 <script src="<?= base_url('public/plugins/chart.js/Chart.min.js'); ?>"></script>
 <!-- AdminLTE for demo purposes -->

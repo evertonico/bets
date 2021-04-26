@@ -27,10 +27,10 @@ class Gerentes extends BaseController
 
     }
 
-    public function new()
+    public function cadastro()
     {
         $data['title'] = TITULO_GERENTE;
-        return view('gerentes/cadastro');
+        return view('gerentes/cadastro', ['data' => $data]);
     }
 
 }
