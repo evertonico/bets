@@ -74,8 +74,10 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-8">
-                    <label>Observação</label>
-                    <input class="form-control" style="width: 100%;"></input>
+                    <div class="form-group">
+                        <label>Observação</label>
+                        <input class="form-control" style="width: 100%;"></input>
+                    </div>
                 </div>
             </div>
             <!-- /.row-3 -->
@@ -156,7 +158,7 @@
             mask: ["(99) 9999-9999", "(99) 99999-9999", ],
             keepStatic: true
         });
-        
+
         $("#money").maskMoney({
             prefix: "R$",
             decimal: ",",
