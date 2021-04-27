@@ -143,6 +143,7 @@
 <!-- InputMask -->
 <script src="<?= base_url('public/plugins/moment/moment.min.js'); ?>"></script>
 <script src="<?= base_url('public/plugins/inputmask/jquery.inputmask.min.js'); ?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
 <!-- OPTIONAL SCRIPTS -->
 <script src="<?= base_url('public/plugins/chart.js/Chart.min.js'); ?>"></script>
 <!-- AdminLTE for demo purposes -->
