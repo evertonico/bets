@@ -16,13 +16,13 @@
                 <div class="col-12 col-md-6">
                     <div class="form-group">
                         <label>Nome</label>
-                        <input class="form-control" style="width: 100%;"></input>
+                        <input class="form-control" style="width: 100%;" id="txt-nome" name="txt-nome"></input>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="form-group">
                         <label>Usuário</label>
-                        <input type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                        <input type="text" class="form-control" id="txt-usuario" name="txt-usuario"></input>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
@@ -32,7 +32,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                            <input id="txt-senha" name="txt-senha" type="password" class="form-control" maxlength="8"></input>
                         </div>
                     </div>
                 </div>
@@ -43,19 +43,19 @@
                 <div class="col-12 col-md-6">
                     <div class="form-group">
                         <label>Endereço</label>
-                        <input class="form-control" style="width: 100%;"></input>
+                        <input class="form-control" style="width: 100%;" id="txt-endereco" name="txt-endereco"></input>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="form-group">
                         <label>E-mail</label>
-                        <input class="form-control" style="width: 100%;"></input>
+                        <input class="form-control" style="width: 100%;" id="txt-email" name="txt-email"></input>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="form-group">
                         <label>Data de Criação</label>
-                        <input class="form-control" style="width: 100%;"></input>
+                        <input class="form-control" style="width: 100%;" id="txt-data-criacao" name="txt-data-criacao"></input>
                     </div>
                 </div>
             </div>
@@ -69,14 +69,14 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="telefone" name="telefone"></input>
+                            <input type="text" class="form-control" id="txt-telefone" name="txt-telefone"></input>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-8">
                     <div class="form-group">
                         <label>Observação</label>
-                        <input class="form-control" style="width: 100%;"></input>
+                        <input class="form-control" style="width: 100%;" id="txt-observacao" name="txt-observacao"></input>
                     </div>
                 </div>
             </div>
@@ -86,19 +86,19 @@
                 <div class="col-12 col-md-4">
                     <div class="form-group">
                         <label>Limite de Apostas Geral (R$)</label>
-                        <input class="form-control" style="width: 100%;"></input>
+                        <input class="form-control" style="width: 100%;" id="txt-limite-geral" name="txt-limite-geral"></input>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="form-group">
                         <label>Limite de Apostas Simples (R$)</label>
-                        <input class="form-control" style="width: 100%;" id="money"></input>
+                        <input class="form-control" style="width: 100%;" id="txt-limite-simples" name="txt-limite-simples"></input>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="form-group">
                         <label>Comissão Sobre o Lucro (%)</label>
-                        <input class="form-control" style="width: 100%;"></input>
+                        <input class="form-control" style="width: 100%;" id="txt-comissao-lucro" name="txt-comissao-lucro"></input>
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                 <div class="col-12 col-md-3">
                     <div class="form-group">
                         <label>Status</label>
-                        <select class="form-control" aria-label="Default select example">
+                        <select class="form-control" aria-label="Default select example" id="select-status" name="select-status">
                             <option selected>Selecione uma opção</option>
                             <option value="1">Ativo</option>
                             <option value="2">Inativo</option>
@@ -118,22 +118,12 @@
                 <div class="col-12 col-md-9">
                     <div class="form-group">
                         <label>Permissões</label>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                            <label class="form-check-label" for="flexSwitchCheckDefault">Criar cambistas</label>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Alterar status dos cambistas</label>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDisabled" disabled>
-                            <label class="form-check-label" for="flexSwitchCheckDisabled">Ativar/Desativar apostas dos cambistas</label>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckCheckedDisabled" checked disabled>
-                            <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Alterar limite apostas dos cambistas</label>
-                        </div>
+                        <?php foreach ($data['listPermissoes'] as $array) { ?>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="check-permissoes" name="check-permissoes" value="<?=$array->ci_permissao?>">
+                                <label class="form-check-label" for="check-permissoes"><?=$array->ds_permissao?></label>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -159,9 +149,21 @@
             keepStatic: true
         });
 
-        $("#money").maskMoney({
+        $("#txt-limite-geral").maskMoney({
             prefix: "R$",
             decimal: ",",
+            thousands: "."
+        });
+
+        $("#txt-limite-simples").maskMoney({
+            prefix: "R$",
+            decimal: ",",
+            thousands: "."
+        });
+
+        $("#txt-comissao-lucro").maskMoney({
+            decimal: ",",
+            suffix: "%",
             thousands: "."
         });
     });
