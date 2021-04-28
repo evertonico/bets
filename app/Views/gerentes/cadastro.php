@@ -55,7 +55,7 @@
                 <div class="col-6 col-md-3">
                     <div class="form-group">
                         <label>Data de Criação</label>
-                        <input class="form-control" style="width: 100%;" id="txt-data-criacao" name="txt-data-criacao"></input>
+                        <input class="form-control" style="width: 100%;" id="txt-data-criacao" name="txt-data-criacao" disabled></input>
                     </div>
                 </div>
             </div>
