@@ -32,7 +32,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input id="txt-senha" name="txt-senha" type="password" class="form-control" maxlength="8"></input>
+                            <input type="password" class="form-control" maxlength="8" id="txt-senha" name="txt-senha"></input>
                         </div>
                     </div>
                 </div>
