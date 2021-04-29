@@ -14,9 +14,7 @@ class UsuarioModel extends Model
 {
     protected $table = 'tb_usuario';
     protected $primaryKey = 'ci_usuario';
-
     protected $useAutoIncrement = true;
-
     protected $allowedFields = ['cd_tipo_usuario',
                                 'ds_nome',
                                 'ds_email',
@@ -29,11 +27,9 @@ class UsuarioModel extends Model
                                 'nm_login',
                                 'ds_observacao'
                                 ];
-
     protected $createdField = 'dt_criacao';
     protected $updatedField  = 'dt_atualizado';
     protected $deletedField  = 'dt_exclusao';
-
     protected $useSoftDeletes = true;
     protected $returnType = 'array';
 

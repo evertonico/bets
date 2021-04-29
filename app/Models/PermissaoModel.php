@@ -15,7 +15,7 @@ class PermissaoModel extends Model
     protected $table = 'tb_permissao';
     protected $primaryKey = 'ci_permissao';
     protected $allowedFields = ['ds_permissao'];
-    protected $returnType = 'object';
+    protected $returnType = 'array';
 
     /**
      * @param null $cd_tipo_usuario
