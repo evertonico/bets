@@ -131,7 +131,7 @@
                         <div class="form-group">
                             <label>Status</label>
                             <select class="form-control" aria-label="Default select example" id="select-status" name="select-status">
-                                <option selected>Selecione uma opção</option>
+                                <option value="<?php echo null ?>" selected>Selecione uma opção</option>
                                 <option value="false">Ativo</option>
                                 <option value="true">Inativo</option>
                             </select>
