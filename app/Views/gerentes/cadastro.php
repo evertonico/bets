@@ -7,7 +7,7 @@
         if (isset($errors)): ?>
             <div class="alert alert-danger" role="alert">
                  <?php foreach ($errors as $error) : ?>
-                     <?= esc($error) ?><br />
+                     <?=esc($error)?><br />
                 <?php endforeach; ?>
             </div>
         <?php
@@ -18,7 +18,7 @@
     <?php
         if (isset($success)): ?>
             <div class="alert alert-success" role="alert">
-                <?= esc($success) ?>
+                <?=esc($success)?>
             </div>
     <?php endif; ?>
     <!-- /.sucess-messages -->
