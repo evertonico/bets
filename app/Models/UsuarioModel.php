@@ -14,7 +14,9 @@ class UsuarioModel extends Model
 {
     protected $table = 'tb_usuario';
     protected $primaryKey = 'ci_usuario';
+
     protected $useAutoIncrement = true;
+
     protected $allowedFields = ['cd_tipo_usuario',
                                 'ds_nome',
                                 'ds_email',
@@ -27,6 +29,7 @@ class UsuarioModel extends Model
                                 'nm_login',
                                 'ds_observacao'
                                 ];
+
     protected $createdField = 'dt_criacao';
     protected $returnType = 'array';
 
@@ -35,6 +38,7 @@ class UsuarioModel extends Model
         'ds_nome' => 'required',
         'ds_email' => 'required',
     ];
+
     // Mensagens de validação
     protected $validationMessages = [
         'ds_nome' => [
@@ -44,6 +48,7 @@ class UsuarioModel extends Model
             'required' => 'O campo e-mail não pode ser vazio'
         ]
     ];
+
     protected $skipValidation     = false;
 
 
