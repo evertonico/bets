@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 /**
  * Class UsuarioModel
  *
- * Model Permissões
+ * Model Usuário
  *
  * @package App\Entities
  */
@@ -44,7 +44,7 @@ class UsuarioModel extends Model
         'ds_email' => 'required|valid_email|is_unique[tb_usuario.ds_email]',
         'ds_senha' => 'required|min_length[6]',
         'cd_tipo_usuario' => 'required',
-        'fl_bloqueado' => 'required' 
+        'fl_bloqueado' => 'required'
     ];
 
     // Mensagens de validação
@@ -77,6 +77,5 @@ class UsuarioModel extends Model
     ];
 
     protected $skipValidation = false;
-
 
 }
