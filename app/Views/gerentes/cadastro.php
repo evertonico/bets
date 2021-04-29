@@ -2,25 +2,26 @@
 <?= $this->section('content'); ?>
 <!-- main content -->
 <section class="content">
-    <!-- mensagens de erro -->
+    <!-- errors-messages -->
     <?php
-    if (isset($errors)):
-        foreach ($errors as $error) : ?>
+        if (isset($errors)): ?>
             <div class="alert alert-danger" role="alert">
-                <?= esc($error) ?>
+                 <?php foreach ($errors as $error) : ?>
+                     <?= esc($error) ?><br />
+                <?php endforeach; ?>
             </div>
         <?php
-        endforeach;
-    endif;
+        endif;
     ?>
-    <!-- /.mensagem de erro -->
-    <!-- mensagens de sucesso -->
-    <?php if (isset($success)): ?>
-        <div class="alert alert-success" role="alert">
-            <?= esc($success) ?>
-        </div>
+    <!-- /.errors-messages -->
+    <!-- sucess-messages -->
+    <?php
+        if (isset($success)): ?>
+            <div class="alert alert-success" role="alert">
+                <?= esc($success) ?>
+            </div>
     <?php endif; ?>
-    <!-- /.mensagem de sucesso -->
+    <!-- /.sucess-messages -->
     <!-- card-->
     <div class="card card-outline card-info">
         <?php echo form_open(base_url('gerentes/salvar'), $attributes = ['id' => 'form']); ?>
@@ -36,13 +37,14 @@
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label>Nome</label>
-                            <input class="form-control" style="width: 100%;" id="txt-nome" name="txt-nome"></input>
+                            <?php echo form_input(array('name'=>'txt-nome','placeholder'=>'Nome','class'=>'form-control','value'=>set_value('txt-nome'))); ?>
+                            <!--<input class="form-control" style="width: 100%;" id="txt-nome" name="txt-nome"></input>-->
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="form-group">
                             <label>Usuário</label>
-                            <input type="text" class="form-control" id="txt-usuario" name="txt-usuario"></input>
+                            <?php echo form_input(array('name'=>'txt-usuario','placeholder'=>'Usuário','class'=>'form-control','value'=>set_value('txt-usuario',))); ?>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
@@ -52,7 +54,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
-                                <input type="password" class="form-control" maxlength="8" id="txt-senha" name="txt-senha"></input>
+                                <?php echo form_input(array('name'=>'txt-senha','type'=>'password','class'=>'form-control','value'=>set_value('txt-senha'))); ?>
                             </div>
                         </div>
                     </div>
@@ -63,19 +65,19 @@
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label>Endereço</label>
-                            <input class="form-control" style="width: 100%;" id="txt-endereco" name="txt-endereco"></input>
+                            <?php echo form_input(array('name'=>'txt-endereco','placeholder'=>'Endereço','class'=>'form-control','value'=>set_value('txt-endereco'))); ?>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="form-group">
                             <label>E-mail</label>
-                            <input class="form-control" style="width: 100%;" id="txt-email" name="txt-email"></input>
+                            <?php echo form_input(array('name'=>'txt-email','placeholder'=>'E-mail','class'=>'form-control','value'=>set_value('txt-email'))); ?>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="form-group">
                             <label>Data de Criação</label>
-                            <input class="form-control" style="width: 100%;" id="txt-data-criacao" name="txt-data-criacao" disabled></input>
+                            <?php echo form_input(array('name'=>'txt-data-criacao','disabled'=>'true','class'=>'form-control','value'=>date("d/m/y"))); ?>
                         </div>
                     </div>
                 </div>
@@ -89,14 +91,14 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="txt-telefone" name="txt-telefone"></input>
+                                <?php echo form_input(array('id'=>'txt-telefone','name'=>'txt-telefone','class'=>'form-control','value'=>set_value('txt-telefone'))); ?>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-8">
                         <div class="form-group">
                             <label>Observação</label>
-                            <input class="form-control" style="width: 100%;" id="txt-observacao" name="txt-observacao"></input>
+                            <?php echo form_input(array('name'=>'txt-observacao','placeholder'=>'Observação','class'=>'form-control','value'=>set_value('txt-observacao'))); ?>
                         </div>
                     </div>
                 </div>
@@ -106,19 +108,19 @@
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label>Limite de Apostas Geral (R$)</label>
-                            <input class="form-control" style="width: 100%;" id="txt-limite-geral" name="txt-limite-geral"></input>
+                            <?php echo form_input(array('id'=>'txt-limite-geral','name'=>'txt-limite-geral','class'=>'form-control','value'=>set_value('txt-limite-geral'))); ?>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label>Limite de Apostas Simples (R$)</label>
-                            <input class="form-control" style="width: 100%;" id="txt-limite-simples" name="txt-limite-simples"></input>
+                            <?php echo form_input(array('id'=>'txt-limite-simples','name'=>'txt-limite-simples','class'=>'form-control','value'=>set_value('txt-limite-simples'))); ?>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label>Comissão Sobre o Lucro (%)</label>
-                            <input class="form-control" style="width: 100%;" id="txt-comissao-lucro" name="txt-comissao-lucro"></input>
+                            <?php echo form_input(array('id'=>'txt-comissao-lucro','name'=>'txt-comissao-lucro','class'=>'form-control','value'=>set_value('txt-comissao-lucro'))); ?>
                         </div>
                     </div>
                 </div>
@@ -130,8 +132,8 @@
                             <label>Status</label>
                             <select class="form-control" aria-label="Default select example" id="select-status" name="select-status">
                                 <option selected>Selecione uma opção</option>
-                                <option value="1">Ativo</option>
-                                <option value="2">Inativo</option>
+                                <option value="false">Ativo</option>
+                                <option value="true">Inativo</option>
                             </select>
                         </div>
                     </div>

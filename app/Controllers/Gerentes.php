@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\RegulamentoModel;
+use App\Models\UsuarioModel;
 use Config\App;
 
 helper('App\Helpers\template_helper');
@@ -38,48 +39,35 @@ class Gerentes extends BaseController
         return view('gerentes/cadastro', ['data' => $data]);
     }
 
-    /**
-     *
-     */
     public function salvar()
     {
         $data['title'] = TITULO_GERENTE;
+        // Instanciando o model usuário
+        $usuarioModel = new UsuarioModel($db);
+        $request = \Config\Services::request();
+        // Recebendo os campos do formulário
+        $usuario = array(
+            'ds_nome' => $request->getPostGet('txt-nome'),
+            'nm_login' => strtolower($request->getPostGet('txt-usuario')),
+            'ds_senha' => $request->getPostGet('txt-senha'),
+            'ds_endereco' => $request->getPostGet('txt-endereco'),
+            'ds_email' => strtolower($request->getPostGet('txt-email')),
+            'ds_telefone' => $request->getPostGet('txt-telefone'),
+            'ds_observacao' => $request->getPostGet('txt-observacao'),
+            'cd_tipo_usuario' => 3,
+            'fl_bloqueado' => $request->getPostGet('select-status'),
+        );
+        $usuarioModel->save($usuario);
 
-        // Verificando se o acesso está vindo do submit do formulário
-        if ($this->request->getPost() != NULL) {
+        $modelPermissao = new \App\Models\PermissaoModel();
+        // buscando permissões disponíveis para o Tipo de Usuário Gerente (id = 3)
+        $data['listPermissoes'] = $modelPermissao->findByTipoUsuario(3);
 
-            // Chamando o validation
-            $validation = \Config\Services::validation();
+        echo view('gerentes/cadastro', [
+            'errors' => $usuarioModel->errors(),
+            'data' => $data
+        ]);
 
-            // Criando as regras de validação
-            $validation->setRules([
-                'txt-nome' => [
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => 'O campo nome não pode ser vazio.'
-                    ],
-                    'type' => 'alert'
-            ]
-            ]);
-
-            // Validando o formulário
-            $res = $validation->withRequest($this->request)->run();
-
-            // Verificando se passou na validação
-            if (!$res) {
-                $modelPermissao = new \App\Models\PermissaoModel();
-                // buscando permissões disponíveis para o Tipo de Usuário Gerente (id = 3)
-                $data['listPermissoes'] = $modelPermissao->findByTipoUsuario(3);
-                // Chamando a view e enviando os erros de validação
-                echo view('gerentes/cadastro', [
-                    'errors' => $validation->getErrors(),
-                    'data' => $data
-                ]);
-
-            } else {
-
-            }
-        }
     }
 
 }
