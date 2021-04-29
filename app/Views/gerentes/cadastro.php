@@ -130,11 +130,13 @@
                     <div class="col-12 col-md-3">
                         <div class="form-group">
                             <label>Status</label>
-                            <select class="form-control" aria-label="Default select example" id="select-status" name="select-status">
-                                <option value="<?php echo null ?>" selected>Selecione uma opção</option>
-                                <option value="false">Ativo</option>
-                                <option value="true">Inativo</option>
-                            </select>
+                            <?php echo form_dropdown(
+                                    [ 'name' => 'select-status','class' => 'form-control'],
+                                    [''=>'-- Selecione uma opção --',
+                                     'false' => 'Ativo',
+                                     'true' => 'Bloqueado'],
+                                    set_value('select-status'));
+                            ?>
                         </div>
                     </div>
                     <div class="col-12 col-md-9">
