@@ -37,14 +37,13 @@
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label>Nome</label>
-                            <?php echo form_input(array('name'=>'txt-nome','placeholder'=>'Nome','class'=>'form-control','value'=>set_value('txt-nome'))); ?>
-                            <!--<input class="form-control" style="width: 100%;" id="txt-nome" name="txt-nome"></input>-->
+                            <?=form_input(array('name'=>'txt-nome','placeholder'=>'Nome','class'=>'form-control','value'=>set_value('txt-nome'))); ?>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="form-group">
                             <label>Usuário</label>
-                            <?php echo form_input(array('name'=>'txt-usuario','placeholder'=>'Usuário','class'=>'form-control','value'=>set_value('txt-usuario',))); ?>
+                            <?=form_input(array('name'=>'txt-usuario','placeholder'=>'Usuário','class'=>'form-control','value'=>set_value('txt-usuario',))); ?>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
@@ -54,7 +53,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
-                                <?php echo form_input(array('name'=>'txt-senha','type'=>'password','class'=>'form-control','value'=>set_value('txt-senha'))); ?>
+                                <?=form_input(array('name'=>'txt-senha','type'=>'password','class'=>'form-control','value'=>set_value('txt-senha'))); ?>
                             </div>
                         </div>
                     </div>
@@ -65,19 +64,19 @@
                     <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label>Endereço</label>
-                            <?php echo form_input(array('name'=>'txt-endereco','placeholder'=>'Endereço','class'=>'form-control','value'=>set_value('txt-endereco'))); ?>
+                            <?=form_input(array('name'=>'txt-endereco','placeholder'=>'Endereço','class'=>'form-control','value'=>set_value('txt-endereco'))); ?>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="form-group">
                             <label>E-mail</label>
-                            <?php echo form_input(array('name'=>'txt-email','placeholder'=>'E-mail','class'=>'form-control','value'=>set_value('txt-email'))); ?>
+                            <?=form_input(array('name'=>'txt-email','placeholder'=>'E-mail','class'=>'form-control','value'=>set_value('txt-email'))); ?>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="form-group">
                             <label>Data de Criação</label>
-                            <?php echo form_input(array('name'=>'txt-data-criacao','disabled'=>'true','class'=>'form-control','value'=>date("d/m/y"))); ?>
+                            <?=form_input(array('name'=>'txt-data-criacao','disabled'=>'true','class'=>'form-control','value'=>date("d/m/y"))); ?>
                         </div>
                     </div>
                 </div>
@@ -91,14 +90,14 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                 </div>
-                                <?php echo form_input(array('id'=>'txt-telefone','name'=>'txt-telefone','class'=>'form-control','value'=>set_value('txt-telefone'))); ?>
+                                <?=form_input(array('id'=>'txt-telefone','name'=>'txt-telefone','class'=>'form-control','value'=>set_value('txt-telefone'))); ?>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-8">
                         <div class="form-group">
                             <label>Observação</label>
-                            <?php echo form_input(array('name'=>'txt-observacao','placeholder'=>'Observação','class'=>'form-control','value'=>set_value('txt-observacao'))); ?>
+                            <?=form_input(array('name'=>'txt-observacao','placeholder'=>'Observação','class'=>'form-control','value'=>set_value('txt-observacao'))); ?>
                         </div>
                     </div>
                 </div>
@@ -108,19 +107,19 @@
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label>Limite de Apostas Geral (R$)</label>
-                            <?php echo form_input(array('id'=>'txt-limite-geral','name'=>'txt-limite-geral','class'=>'form-control','value'=>set_value('txt-limite-geral'))); ?>
+                            <?=form_input(array('id'=>'txt-limite-geral','name'=>'txt-limite-geral','class'=>'form-control','value'=>set_value('txt-limite-geral'))); ?>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label>Limite de Apostas Simples (R$)</label>
-                            <?php echo form_input(array('id'=>'txt-limite-simples','name'=>'txt-limite-simples','class'=>'form-control','value'=>set_value('txt-limite-simples'))); ?>
+                            <?=form_input(array('id'=>'txt-limite-simples','name'=>'txt-limite-simples','class'=>'form-control','value'=>set_value('txt-limite-simples'))); ?>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-group">
                             <label>Comissão Sobre o Lucro (%)</label>
-                            <?php echo form_input(array('id'=>'txt-comissao-lucro','name'=>'txt-comissao-lucro','class'=>'form-control','value'=>set_value('txt-comissao-lucro'))); ?>
+                            <?=form_input(array('id'=>'txt-comissao-lucro','name'=>'txt-comissao-lucro','class'=>'form-control','value'=>set_value('txt-comissao-lucro'))); ?>
                         </div>
                     </div>
                 </div>
@@ -130,7 +129,7 @@
                     <div class="col-12 col-md-3">
                         <div class="form-group">
                             <label>Status</label>
-                            <?php echo form_dropdown(
+                            <?=form_dropdown(
                                     [ 'name' => 'select-status','class' => 'form-control'],
                                     [''=>'-- Selecione uma opção --',
                                      'false' => 'Ativo',
