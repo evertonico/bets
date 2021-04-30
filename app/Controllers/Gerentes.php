@@ -35,14 +35,14 @@ class Gerentes extends BaseController
     {
         $data['title'] = TITULO_GERENTE;
         $modelPermissao = new \App\Models\PermissaoModel();
+        // variáveis utilizadas no checkbox[] de permissões
+        $data['permissoesDisponiveis'] = [];
+        $data['permissoesSelecionadas'] = [];
         // buscando permissões disponíveis para o Tipo de Usuário Gerente (id = 3)
         $list = $modelPermissao->findByTipoUsuario(3);
-        $array = [];
         foreach ($list as $result){
-           $array[$result->ci_permissao] = $result->ds_permissao;
+            $data['permissoesDisponiveis'][$result->ci_permissao] = $result->ds_permissao;
         }
-        $data['permissoesDisponiveis'] = $array;
-        $data['permissoesSelecionadas'] = [];
         return view('gerentes/cadastro', ['data' => $data]);
     }
 
