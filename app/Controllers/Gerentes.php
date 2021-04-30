@@ -77,13 +77,8 @@ class Gerentes extends BaseController
         foreach ($listPermissoesDisponiveis as $result){
             $data['permissoesDisponiveis'][$result->ci_permissao] = $result->ds_permissao;
         }
-
-        if(isset($check_permissoes)) {
-            $data['permissoesSelecionadas'] = $check_permissoes;
-        } else {
-            $data['permissoesSelecionadas'] = [];
-        }
-
+        $data['permissoesSelecionadas'] = [];
+        
         // Salvando os dados no banco
         $db->transStart();
         $status_save = $usuarioModel->save($usuario);
