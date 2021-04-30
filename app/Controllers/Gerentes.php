@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\RegulamentoModel;
+use App\Models\PermissaoModel;
 use App\Models\UsuarioModel;
 use App\Models\UsuarioPermissaoModel;
 use Config\App;
@@ -23,8 +23,8 @@ class Gerentes extends BaseController
     public function index()
     {
         $data['title'] = TITULO_GERENTE;
-        $model = new RegulamentoModel();
-        $data['result'] = $model->first();
+        //$model = new RegulamentoModel();
+        //$data['result'] = $model->first();
         return view('gerentes/listar', ['data' => $data]);
     }
 
@@ -54,9 +54,9 @@ class Gerentes extends BaseController
         $session = session();
 
         // Instanciando o models necessários
-        $usuarioModel = new UsuarioModel($db);
-        $usuarioPermissaoModel = new UsuarioPermissaoModel($db);
-        $permissaoModel = new \App\Models\PermissaoModel();
+        $usuarioModel = new UsuarioModel();
+        $usuarioPermissaoModel = new UsuarioPermissaoModel();
+        $permissaoModel = new PermissaoModel();
 
         // Recebendo os campos do formulário
         $usuario = array(
@@ -72,7 +72,7 @@ class Gerentes extends BaseController
         );
         $check_permissoes = $request->getPostGet('check-permissoes');
 
-        // Carregando a lista de permissões disponíveis para o perfil gerente (id = 3) - (utilizado no checkbox[] do formuário)
+        // Carregando a lista de permissões disponíveis para o perfil gerente(id=3), utilizado no checkbox[] do formuário
         $listPermissoesDisponiveis = $permissaoModel->findByTipoUsuario(3);
         $arrayPermissoes = [];
         foreach ($listPermissoesDisponiveis as $result){
