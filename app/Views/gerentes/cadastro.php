@@ -142,11 +142,11 @@
                         <div class="form-group">
                             <label>Permissões</label>
                             <?php
-                            foreach ($data['listPermissoes']  as $value => $label) { ?>
+                            foreach ($data['listPermissoesDisponiveis']  as $value => $label) { ?>
                                 <div class="form-check form-switch">
                                     <?php
                                         echo form_checkbox( ['name' => 'check-permissoes[]', 'class' => 'form-check-input'], $value,
-                                        set_checkbox('check-permissoes[]', $value, in_array($value, $data['selectPermissoes'], true))), $label;
+                                        set_checkbox('check-permissoes[]', $value, in_array($value, $data['permissoesSelecionadas'], true))), $label;
                                     ?>
                                 </div>
                                 <?php
