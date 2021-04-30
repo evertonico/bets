@@ -4,14 +4,14 @@
 <section class="content">
     <!-- errors-messages -->
     <?php
-        if (isset($errors)): ?>
-            <div class="alert alert-danger" role="alert">
-                 <?php foreach ($errors as $error) : ?>
-                     <?=esc($error)?><br />
-                <?php endforeach; ?>
-            </div>
-        <?php
-        endif;
+    if (isset($errors)): ?>
+        <div class="alert alert-danger" role="alert">
+            <?php foreach ($errors as $error) : ?>
+                <?=esc($error)?><br />
+            <?php endforeach; ?>
+        </div>
+    <?php
+    endif;
     ?>
     <!-- /.errors-messages -->
     <!-- sucess-messages -->
@@ -141,12 +141,16 @@
                     <div class="col-12 col-md-9">
                         <div class="form-group">
                             <label>Permissões</label>
-                            <?php foreach ($data['listPermissoes'] as $array) { ?>
+                            <?php
+                            foreach ($data['listPermissoes']  as $value => $label) { ?>
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="check-permissoes" name="check-permissoes" value="<?=$array->ci_permissao?>">
-                                    <label class="form-check-label" for="check-permissoes"><?=$array->ds_permissao?></label>
+                                    <?php
+                                        echo form_checkbox( ['name' => 'check-permissoes[]', 'class' => 'form-check-input'], $value,
+                                        set_checkbox('check-permissoes[]', $value, in_array($value, $data['selectPermissoes'], true))), $label;
+                                    ?>
                                 </div>
-                            <?php } ?>
+                                <?php
+                            } ?>
                         </div>
                     </div>
                 </div>

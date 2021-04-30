@@ -2,6 +2,16 @@
 <?= $this->section('content'); ?>
     <!-- Main content -->
     <section class="content">
+        <?php
+        // To print success flash message
+        if (session()->get("success")) {
+            ?>
+            <div class="alert alert-success" role="alert">
+                <?= session()->get("success") ?>
+            </div>
+            <?php
+        }
+        ?>
         <div class="card card-outline card-info">
             <!-- card-header -->
             <div class="card-header">
