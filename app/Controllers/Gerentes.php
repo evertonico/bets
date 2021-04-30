@@ -41,8 +41,8 @@ class Gerentes extends BaseController
         foreach ($list as $result){
            $array[$result->ci_permissao] = $result->ds_permissao;
         }
-        $data['listPermissoes'] = $array;
-        $data['selectPermissoes'] = [];
+        $data['permissoesDisponiveis'] = $array;
+        $data['permissoesSelecionadas'] = [];
         return view('gerentes/cadastro', ['data' => $data]);
     }
 
@@ -74,11 +74,10 @@ class Gerentes extends BaseController
 
         // Carregando a lista de permissões disponíveis para o perfil gerente(id=3), utilizado no checkbox[] do formuário
         $listPermissoesDisponiveis = $permissaoModel->findByTipoUsuario(3);
-        $arrayPermissoes = [];
         foreach ($listPermissoesDisponiveis as $result){
-            $arrayPermissoes[$result->ci_permissao] = $result->ds_permissao;
+            $data['permissoesDisponiveis'][$result->ci_permissao] = $result->ds_permissao;
         }
-        $data['listPermissoesDisponiveis'] = $arrayPermissoes;
+
         if(isset($check_permissoes)) {
             $data['permissoesSelecionadas'] = $check_permissoes;
         } else {
