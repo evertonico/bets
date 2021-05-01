@@ -23,8 +23,8 @@ class Gerentes extends BaseController
     public function index()
     {
         $data['title'] = TITULO_GERENTE;
-        //$model = new RegulamentoModel();
-        //$data['result'] = $model->first();
+        $modelUsuario = new UsuarioModel();
+        $data['result'] = $modelUsuario->orderBy('ds_nome', 'asc')->findAll();
         return view('gerentes/listar', ['data' => $data]);
     }
 
