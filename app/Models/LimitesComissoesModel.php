@@ -41,7 +41,7 @@ class LimitesComissoesModel extends Model
     // Regras de validação
     protected $validationRules    = [
         'vl_limite_apostas_geral' => 'required',
-        'vl_limite_apostas_simples' => 'required|'
+        'vl_limite_apostas_simples' => 'required'
     ];
 
     // Mensagens de validação
