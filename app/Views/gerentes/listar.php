@@ -49,29 +49,32 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($data['result'] as $array) { ?>
-                    <tr>
-                        <td><?=$array['ds_nome'];?></td>
-                        <td style="text-align: center">10%</td>
-                        <td style="text-align: center">(85) 99956-5944</td>
-                        <td style="text-align: center">
-                            <?php
-                            if($array['fl_bloqueado']==='f') { ?>
-                                <button style="width: 80px" class="btn btn-success btn-sm rounded-0">Ativo</button>
-                            <?php } else { ?>
-                                <button style="width: 80px" class="btn btn-danger btn-sm rounded-0">Bloqueado</button>
-                            <?php } ?>
-                        </td>
-                        <td style="text-align: center">
-                            <button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip"
-                                    data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
-                        </td>
-                        <td style="text-align: center">
-                            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip"
-                                    data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <?php } ?>
+                    <?php
+                    foreach ($data['result'] as $array) { ?>
+                        <tr>
+                            <td><?=$array['ds_nome'];?></td>
+                            <td style="text-align: center">10%</td>
+                            <td style="text-align: center">(85) 99956-5944</td>
+                            <td style="text-align: center">
+                                <?php
+                                if($array['fl_bloqueado']==='f') { ?>
+                                    <button style="width: 80px" class="btn btn-success btn-sm rounded-0">Ativo</button>
+                                <?php } else { ?>
+                                    <button style="width: 80px" class="btn btn-danger btn-sm rounded-0">Bloqueado</button>
+                                <?php } ?>
+                            </td>
+                            <td style="text-align: center">
+                                <button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip"
+                                        data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                            </td>
+                            <td style="text-align: center">
+                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip"
+                                        data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
                     </tbody>
                 </table>
             </div>
