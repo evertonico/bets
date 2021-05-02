@@ -69,7 +69,7 @@ class Gerentes extends BaseController
             'ds_email' => strtolower($request->getPostGet('txt-email')),
             'ds_telefone' => $request->getPostGet('txt-telefone'),
             'ds_observacao' => $request->getPostGet('txt-observacao'),
-            'cd_tipo_usuario' => 3,
+            'cd_tipo_usuario' => ID_GERENTE,
             'fl_bloqueado' => $request->getPostGet('select-status'),
         );
         $check_permissoes = $request->getPostGet('check-permissoes');
