@@ -8,7 +8,6 @@ use App\Models\LimitesComissoesModel;
 use Config\App;
 
 helper('App\Helpers\template_helper');
-helper('number');
 helper('funcoes');
 /**
  * Class Gerente
