@@ -83,4 +83,3 @@ defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest auto
  */
 define('TITULO_REGULAMENTO', 'Regulamento');
 define('TITULO_GERENTE', 'Gerentes');
-define('RETIRA_CARACTERES_VALORES', array('R$','%','.',','));
