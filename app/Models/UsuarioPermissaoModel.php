@@ -20,7 +20,7 @@ class UsuarioPermissaoModel extends Model
     protected $returnType = 'array';
 
     // Regras de validação
-    protected $validationRules    = [
+    protected $validationRules = [
         'cd_permissao' => 'required',
         'cd_usuario' => 'required'
     ];
