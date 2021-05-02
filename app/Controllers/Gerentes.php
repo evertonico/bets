@@ -93,7 +93,7 @@ class Gerentes extends BaseController
 
         // Salvando as comissões, limites e permissões do usuário
         if($id_usuario):
-            if($check_permissoes) {
+            if($check_permissoes):
                 foreach ($check_permissoes as $array):
                     $usuarioPermissao = array(
                         'cd_permissao' => $array,
@@ -102,7 +102,7 @@ class Gerentes extends BaseController
                     $status_save = $usuarioPermissaoModel->save($usuarioPermissao);
                 endforeach;
             endif;
-        }
+        endif;
 
         // Salvando os limites de aposta e comissões do usuário
         $limitesComissoes['cd_usuario'] = $id_usuario;
