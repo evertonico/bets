@@ -4,24 +4,36 @@
 <section class="content">
     <!-- errors-messages -->
     <?php
-    if (isset($errors)): ?>
+    if (session()->get("errorsUsuario") || session()->get("errorsPermissao") || session()->get("errorsLimitesComissoes")): ?>
         <div class="alert alert-danger" role="alert">
-            <?php foreach ($errors as $error) : ?>
+            <?php
+                if(session()->get("errorsUsuario")):
+                foreach (session()->get("errorsUsuario") as $error) : ?>
                 <?=esc($error)?><br />
-            <?php endforeach; ?>
+            <?php
+                endforeach;
+                endif;?>
+            <?php
+            if(session()->get("errorsPermissao")):
+            foreach (session()->get("errorsPermissao") as $error) : ?>
+                <?=esc($error)?><br />
+            <?php
+            endforeach;
+            endif;?>
+            <?php
+            if(session()->get("errorsLimitesComissoes")):
+                foreach (session()->get("errorsLimitesComissoes") as $error) :
+                    if($error): ?>
+                        <?=esc($error)?><br />
+            <?php
+                    endif;
+            endforeach;
+            endif;?>
         </div>
     <?php
     endif;
     ?>
     <!-- /.errors-messages -->
-    <!-- sucess-messages -->
-    <?php
-        if (isset($success)): ?>
-            <div class="alert alert-success" role="alert">
-                <?=esc($success)?>
-            </div>
-    <?php endif; ?>
-    <!-- /.sucess-messages -->
     <!-- card-->
     <div class="card card-outline card-info">
         <?php echo form_open(base_url('gerentes/salvar'), $attributes = ['id' => 'form']); ?>
