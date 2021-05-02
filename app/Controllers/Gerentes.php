@@ -110,7 +110,7 @@ class Gerentes extends BaseController
 
         if ($db->transStatus() AND $status_save===TRUE) {
             $db->transCommit();
-            $session->setFlashdata("success", SUCESS_MESSAGE);
+            $session->setFlashdata("success",SUCESS_MESSAGE);
             return redirect()->to(base_url('gerentes'));
         } else {
             $db->transRollback();
