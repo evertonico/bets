@@ -90,7 +90,7 @@ class Gerentes extends BaseController
         $status_save = $usuarioModel->save($usuario);
         $id_usuario = $usuarioModel->getInsertID();
 
-        // Salvando as comissões, limites e permissões do usuário
+        // Salvando as permissões do usuário
         if($id_usuario):
             if($check_permissoes):
                 foreach ($check_permissoes as $array):
@@ -103,7 +103,7 @@ class Gerentes extends BaseController
             endif;
         endif;
 
-        // Salvando os limites de aposta e comissões do usuário
+        // Salvando os limites/comissões do usuário
         $limitesComissoes['cd_usuario'] = $id_usuario;
         $status_save = $limitesComissoesModel->save($limitesComissoes);
 
@@ -116,9 +116,7 @@ class Gerentes extends BaseController
             $session->setFlashdata("errorsUsuario", $usuarioModel->errors());
             $session->setFlashdata("errorsPermissao", $permissaoModel->errors());
             $session->setFlashdata("errorsLimitesComissoes", $limitesComissoesModel->errors());
-            return view('gerentes/cadastro', [
-                'data' => $data
-            ]);
+            return view('gerentes/cadastro', $data);
         }
     }
 
