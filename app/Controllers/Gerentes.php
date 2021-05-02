@@ -39,8 +39,8 @@ class Gerentes extends BaseController
         // variáveis utilizadas no checkbox[] de permissões
         $data['permissoesDisponiveis'] = [];
         $data['permissoesSelecionadas'] = [];
-        // buscando permissões disponíveis para o Tipo de Usuário Gerente (id = 3)
-        $list = $modelPermissao->findByTipoUsuario(3);
+        // buscando permissões disponíveis para o Tipo de Usuário Gerente
+        $list = $modelPermissao->findByTipoUsuario(ID_GERENTE);
         foreach ($list as $result){
             $data['permissoesDisponiveis'][$result->ci_permissao] = $result->ds_permissao;
         }
@@ -73,18 +73,17 @@ class Gerentes extends BaseController
             'fl_bloqueado' => $request->getPostGet('select-status'),
         );
         $check_permissoes = $request->getPostGet('check-permissoes');
-
         $limitesComissoes = array(
             'vl_limite_apostas_geral' => currencyToDb($request->getPostGet('txt-limite-geral')),
             'vl_limite_apostas_simples' => currencyToDb($request->getPostGet('txt-limite-simples')),
             'vl_comissao_lucro_gerente' => currencyToDb($request->getPostGet('txt-comissao-lucro')),
         );
 
-        // Carregando a lista de permissões disponíveis para o perfil gerente(id=3), utilizado no checkbox[] do formuário
-        $listPermissoesDisponiveis = $permissaoModel->findByTipoUsuario(3);
-        foreach ($listPermissoesDisponiveis as $result){
+        // Carregando a lista de permissões disponíveis para o perfil gerente, utilizado no checkbox[] do formuário
+        $listPermissoesDisponiveis = $permissaoModel->findByTipoUsuario(ID_GERENTE);
+        foreach ($listPermissoesDisponiveis as $result):
             $data['permissoesDisponiveis'][$result->ci_permissao] = $result->ds_permissao;
-        }
+        endforeach;
         $data['permissoesSelecionadas'] = [];
 
         // Salvando os dados no banco
@@ -93,16 +92,16 @@ class Gerentes extends BaseController
         $id_usuario = $usuarioModel->getInsertID();
 
         // Salvando as comissões, limites e permissões do usuário
-        if($id_usuario) {
+        if($id_usuario):
             if($check_permissoes) {
-                foreach ($check_permissoes as $array) {
+                foreach ($check_permissoes as $array):
                     $usuarioPermissao = array(
                         'cd_permissao' => $array,
                         'cd_usuario' => $id_usuario
                     );
                     $status_save = $usuarioPermissaoModel->save($usuarioPermissao);
-                }
-            }
+                endforeach;
+            endif;
         }
 
         // Salvando os limites de aposta e comissões do usuário
@@ -111,7 +110,7 @@ class Gerentes extends BaseController
 
         if ($db->transStatus() AND $status_save===TRUE) {
             $db->transCommit();
-            $session->setFlashdata("success", "Operação realizada com sucesso!");
+            $session->setFlashdata("success", SUCESS_MESSAGE);
             return redirect()->to(base_url('gerentes'));
         } else {
             $db->transRollback();
