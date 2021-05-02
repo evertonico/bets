@@ -107,17 +107,17 @@ class Gerentes extends BaseController
         $limitesComissoes['cd_usuario'] = $id_usuario;
         $status_save = $limitesComissoesModel->save($limitesComissoes);
 
-        if ($db->transStatus() AND $status_save===TRUE) {
+        if ($db->transStatus() AND $status_save===TRUE):
             $db->transCommit();
             $session->setFlashdata("success",SUCESS_MESSAGE);
             return redirect()->to(base_url('gerentes'));
-        } else {
+        else:
             $db->transRollback();
             $session->setFlashdata("errorsUsuario", $usuarioModel->errors());
             $session->setFlashdata("errorsPermissao", $permissaoModel->errors());
             $session->setFlashdata("errorsLimitesComissoes", $limitesComissoesModel->errors());
             return view('gerentes/cadastro', ['data' => $data]);
-        }
+        endif;
     }
 
 }
