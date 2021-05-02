@@ -40,9 +40,9 @@ class Gerentes extends BaseController
         $data['permissoesSelecionadas'] = [];
         // buscando permissões disponíveis para o Tipo de Usuário Gerente
         $list = $modelPermissao->findByTipoUsuario(ID_GERENTE);
-        foreach ($list as $result){
+        foreach ($list as $result):
             $data['permissoesDisponiveis'][$result->ci_permissao] = $result->ds_permissao;
-        }
+        endforeach;;
         return view('gerentes/cadastro', ['data' => $data]);
     }
 
@@ -116,7 +116,7 @@ class Gerentes extends BaseController
             $session->setFlashdata("errorsUsuario", $usuarioModel->errors());
             $session->setFlashdata("errorsPermissao", $permissaoModel->errors());
             $session->setFlashdata("errorsLimitesComissoes", $limitesComissoesModel->errors());
-            return view('gerentes/cadastro', $data);
+            return view('gerentes/cadastro', ['data' => $data]);
         }
     }
 
