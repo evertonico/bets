@@ -1,14 +1,15 @@
 <?php
-
 namespace App\Controllers;
 
 use App\Models\PermissaoModel;
 use App\Models\UsuarioModel;
 use App\Models\UsuarioPermissaoModel;
+use App\Models\LimitesComissoesModel;
 use Config\App;
 
 helper('App\Helpers\template_helper');
-
+helper('number');
+helper('funcoes');
 /**
  * Class Gerente
  * @package App\Controllers
@@ -57,6 +58,7 @@ class Gerentes extends BaseController
         $usuarioModel = new UsuarioModel();
         $usuarioPermissaoModel = new UsuarioPermissaoModel();
         $permissaoModel = new PermissaoModel();
+        $limitesComissoesModel = new LimitesComissoesModel();
 
         // Recebendo os campos do formulário
         $usuario = array(
@@ -72,41 +74,54 @@ class Gerentes extends BaseController
         );
         $check_permissoes = $request->getPostGet('check-permissoes');
 
+        $limitesComissoes = array(
+            'vl_limite_apostas_geral' => currencyToDb($request->getPostGet('txt-limite-geral')),
+            'vl_limite_apostas_simples' => currencyToDb($request->getPostGet('txt-limite-simples')),
+            'vl_comissao_lucro_gerente' => currencyToDb($request->getPostGet('txt-comissao-lucro')),
+        );
+
         // Carregando a lista de permissões disponíveis para o perfil gerente(id=3), utilizado no checkbox[] do formuário
         $listPermissoesDisponiveis = $permissaoModel->findByTipoUsuario(3);
         foreach ($listPermissoesDisponiveis as $result){
             $data['permissoesDisponiveis'][$result->ci_permissao] = $result->ds_permissao;
         }
         $data['permissoesSelecionadas'] = [];
-        
+
         // Salvando os dados no banco
-        $db->transStart();
+        $db->transBegin();
         $status_save = $usuarioModel->save($usuario);
         $id_usuario = $usuarioModel->getInsertID();
 
-        // Salvando as permissões do usuário
+        // Salvando as comissões, limites e permissões do usuário
         if($id_usuario) {
-            foreach ($check_permissoes as $array) {
-                $usuarioPermissao = array(
-                    'cd_permissao' => $array,
-                    'cd_usuario' => $id_usuario
-                );
-                $usuarioPermissaoModel->save($usuarioPermissao);
+            if($check_permissoes) {
+                foreach ($check_permissoes as $array) {
+                    $usuarioPermissao = array(
+                        'cd_permissao' => $array,
+                        'cd_usuario' => $id_usuario
+                    );
+                    $status_save = $usuarioPermissaoModel->save($usuarioPermissao);
+                }
             }
         }
-        $db->transComplete();
 
-        // Chamando a view
-        if($status_save===false){
-            return view('gerentes/cadastro', [
-                'errors' => $usuarioModel->errors(),
-                'data' => $data
-            ]);
-        } else {
+        // Salvando os limites de aposta e comissões do usuário
+        $limitesComissoes['cd_usuario'] = $id_usuario;
+        $status_save = $limitesComissoesModel->save($limitesComissoes);
+
+        if ($db->transStatus() AND $status_save===TRUE) {
+            $db->transCommit();
             $session->setFlashdata("success", "Operação realizada com sucesso!");
             return redirect()->to(base_url('gerentes'));
+        } else {
+            $db->transRollback();
+            $session->setFlashdata("errorsUsuario", $usuarioModel->errors());
+            $session->setFlashdata("errorsPermissao", $permissaoModel->errors());
+            $session->setFlashdata("errorsLimitesComissoes", $limitesComissoesModel->errors());
+            return view('gerentes/cadastro', [
+                'data' => $data
+            ]);
         }
-
     }
 
 }
