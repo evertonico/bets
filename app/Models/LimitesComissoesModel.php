@@ -39,18 +39,22 @@ class LimitesComissoesModel extends Model
     protected $returnType = 'array';
 
     // Regras de validação
-    protected $validationRules    = [
-        'vl_limite_apostas_geral' => 'required',
-        'vl_limite_apostas_simples' => 'required'
+    protected $validationRules = [
+        'cd_usuario' => 'required',
+        'vl_comissao_lucro_gerente' => 'less_than_equal_to[100]',
+        'vl_limite_apostas_simples' => 'less_than_equal_to[{vl_limite_apostas_geral}]'
     ];
 
     // Mensagens de validação
     protected $validationMessages = [
-        'vl_limite_apostas_geral' => [
-            'required' => 'O valor do limite de apostas geral deve ser preenchido.'
+        'cd_usuario' => [
+            'required' => ''
+        ],
+        'vl_comissao_lucro_gerente' => [
+            'less_than_equal_to' => 'O percentual da comissão não pode ser superior a 100%.'
         ],
         'vl_limite_apostas_simples' => [
-            'required' => 'O valor do limite de apostas simples deve ser preenchido.'
+            'less_than_equal_to' => 'O limite para apostas simples não pode ser maior que o limite geral.'
         ]
     ];
 

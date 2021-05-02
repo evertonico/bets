@@ -36,7 +36,7 @@ class UsuarioModel extends Model
     // Regras de validação
     protected $validationRules    = [
         'ds_nome' => 'required|min_length[3]',
-        'nm_login' => 'required|min_length[4]|max_length[20]|is_unique[tb_usuario.nm_login]',
+        'nm_login' => 'required|min_length[4]|max_length[20]|is_unique[tb_usuario.nm_login]|alpha_numeric',
         'ds_email' => 'required|valid_email|is_unique[tb_usuario.ds_email]',
         'ds_senha' => 'required|min_length[6]',
         'cd_tipo_usuario' => 'required',
@@ -51,6 +51,7 @@ class UsuarioModel extends Model
         ],
         'nm_login' => [
             'required' => 'O usuário não pode ser vazio.',
+            'alpha_numeric' => 'O usuário só pode conter letras e números.',
             'is_unique' => 'Este login já está sendo utilizado.',
             'min_length' => 'O usuário deve possuir pelo o menos 4 caracteres.',
             'max_length' => 'O usuário não deve possuir mais de 20 caracteres.'
